@@ -38,16 +38,15 @@ class LinkedList:
 		pivot = end
 		while (start != end):
 			if start.data < pivot.data:
-				pivot_prev = curr;  
-				temp = curr.data;  
-				curr.data = start.data;  
-				start.data = temp;  
-				curr = curr.next; 
+				pivot_prev = curr  
+				temp = curr.data  
+				curr.data = start.data 
+				start.data = temp
+				curr = curr.next 
 			start = start.next
-		temp = curr.data;  
-		curr.data = pivot;  
-		end.data = temp;     
-		return pivot_prev; 
+		temp = curr.data  
+		curr.data = pivot.data    
+		return pivot_prev 
 	  
 	def sort(self,start,end):
 
@@ -59,13 +58,13 @@ class LinkedList:
 		# // that means start and pivot is same  
 		# // so pick from next of pivot 
 		if pivot_prev != None and pivot_prev == start :
-			self.sort(pivot_prev.next, end); 
+			self.sort(pivot_prev.next, end) 
 			  
 		# // if pivot is in between of the list, 
 		# // start from next of pivot,  
 		# // since we have pivot_prev, so we move two nodes 
 		elif pivot_prev != None and pivot_prev.next != None :
-			self.sort(pivot_prev.next.next, end); 
+			self.sort(pivot_prev.next.next, end) 
 
 			
 myLL = LinkedList() 
