@@ -12,13 +12,10 @@ for index,char in enumerate(str):
 
     if index:
         if last_char == char:
-            stack.append(char)
             count += 1
         else:
             if count > 0:
-                while count != 0:
-                    stack.pop()
-                    count -= 1
+                count = 0
                 stack.pop()
             stack.append(char)
     else:
