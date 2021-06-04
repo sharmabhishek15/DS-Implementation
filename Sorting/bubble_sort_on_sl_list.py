@@ -21,26 +21,27 @@ class LinkedList:
         prev = None
         current = self.head
         next = current.next
-
-        while current.next is not None:
-            if current.data > next.data:
-                if prev == None:
-                    prev = current.next
-                    next = next.next
-                    prev.next = current
-                    current.next = next
-                    self.head = prev
+        for i in range(1,self.node_count-1):
+            print("iteration : " , i)
+            while current.next is not None:
+                if current.data > next.data:
+                    if prev == None:
+                        prev = current.next
+                        next = next.next
+                        prev.next = current
+                        current.next = next
+                        self.head = prev
+                    else:
+                        temp = next
+                        next = next.next
+                        prev.next = current.next
+                        prev = temp
+                        temp.next = current
+                        current.next = next
                 else:
-                    temp = next
-                    next = next.next
-                    prev.next = current.next
-                    prev = temp
-                    temp.next = current
-                    current.next = next
-            else:
-                prev = current
-                current = next
-                next = current.next
+                    prev = current
+                    current = next
+                    next = current.next
 
     # Utility function to print the linked list
     def printList(self):
@@ -57,7 +58,7 @@ if __name__ == '__main__':
     llist.insertAtFirst(7)
     llist.insertAtFirst(2)
     llist.insertAtFirst(4)
-    llist.insertAtFirst(1)
+    llist.insertAtFirst(6)
 
     print('Created linked list is:')
     llist.printList()
