@@ -4,6 +4,7 @@ from math import inf
 class QuestionOfArray:
     def __init__(self):
         self.name = "Array Practice Question"
+###---------------------------------------------------------###
 
     def leader(self, A, N):
         """
@@ -28,6 +29,7 @@ class QuestionOfArray:
                 h = i
         op = op[::-1]
         return op
+###---------------------------------------------------------###
 
     def equilibriumPoint(self, A, N):
         """Input:
@@ -50,6 +52,7 @@ class QuestionOfArray:
             else:
                 sum_ -= A[i]
         return -1
+###---------------------------------------------------------###
 
     def subArraySum(self, arr, n, sum_):
         """
@@ -75,7 +78,7 @@ class QuestionOfArray:
             i += 1
         A.append(-1)
         return A
-
+###---------------------------------------------------------###
 
     def sort012(self, arr, n):
         """
@@ -104,7 +107,7 @@ class QuestionOfArray:
             else:
                 mid += 1
         return arr
-
+###---------------------------------------------------------###
 
     def rotateArr(self,A,D,N):
         #Your code here
@@ -125,7 +128,7 @@ class QuestionOfArray:
             if result[i] > N / 2:
                 return i
         return -1
-
+###---------------------------------------------------------###
 
     def increment(self, arr, N):
         # code here
@@ -142,8 +145,9 @@ class QuestionOfArray:
         if carry ==1:
             arr = arr + [1]
         return arr[::-1]
+###---------------------------------------------------------###
 
-    def rearrange(self, arr, n):
+    def rearrangeposneg(self, arr, n):
         # code here
         # code here
         pos = []
@@ -172,6 +176,7 @@ class QuestionOfArray:
                     arr = arr + pos
                     break
         return arr
+###---------------------------------------------------------###
 
     def productExceptSelf(self, nums, n):
         """
@@ -205,12 +210,14 @@ class QuestionOfArray:
             elif flag == 1 and nums[i] != 0:
                 prod_list[i] = 0
             elif flag == 0:
-                prod_list[i] = sum_ // nums[i]
+
+                [i] = sum_ // nums[i]
             else:
                 # flag == 1 and nums[i] == 0
                 prod_list[i] = sum_
 
         return prod_list
+###---------------------------------------------------------###
 
     def stockBuySell(self, A, n):
         # code here
@@ -224,3 +231,36 @@ class QuestionOfArray:
             return 1
         else:
             return 0
+###---------------------------------------------------------###
+
+    def rearrange(self, arr, n):
+        """Input:
+        N = 6
+        arr[] = {1,2,3,4,5,6}
+        Output: 6 1 5 2 4 3
+        Explanation: Max element = 6, min = 1,
+        second max = 5, second min = 2, and
+        so on... Modified array is : 6 1 5 2 4 3.
+        """
+        ##Your code here
+        new_list = []
+        while len(arr) != 0:
+            new_list.append(arr.pop())
+            if len(arr) != 0:
+                new_list.append(arr.pop(0))
+
+        return print(*new_list)
+
+    ###---------------------------------------------------------###
+
+    def canReach(self, A, N):
+        # Peack Valley apparoch
+        # code here
+        reachability = 0
+        if A[0] == 0:
+            return 0
+        for i in range(N):
+            if reachability < i:
+                return 0
+            reachability = max(reachability, i + A[i])
+        return 1
