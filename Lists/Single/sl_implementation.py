@@ -1,7 +1,7 @@
 class Node:
-	def __init__(self, data):
+	def __init__(self, data, next=None):
 		self.data = data
-		self.next = None
+		self.next = next
 
 
 class LinkedList:
@@ -145,7 +145,24 @@ class LinkedList:
 		self.head = prev
 
 
-	# Utility function to print the linked list
+	def reverseList2(self, left, right):
+		dummy = Node(0, self.head)
+
+		leftPrev, curr = dummy, self.head
+		for i in range(left - 1):
+			leftPrev, curr = curr, curr.next
+
+		prev = None
+		for i in range(right - left + 1):
+			tempNext = curr.next
+			curr.next = prev
+			prev, curr = curr, tempNext
+
+		leftPrev.next.next = curr
+		leftPrev.next = prev
+		self.head = dummy.next
+
+  	# Utility function to print the linked list
 	def printList(self):
 		temp = self.head
 		while (temp):
@@ -173,7 +190,8 @@ if __name__=='__main__':
 	# llist.oddEvenList()
 	# print('Created linked list is:')
 	# llist.printList()
-	llist.reverseList()
+	# llist.reverseList()
+	llist.reverseList2(2, 4)
 	print('Created linked list is:')
 	llist.printList()
 
